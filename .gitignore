@@ -5,3 +5,4 @@
 !*.md
 !go.mod
 !go.sum
+!*.tmpl
