@@ -7,21 +7,11 @@ import (
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	n, err := fmt.Fprintf(w, "Hello World")
-	if err != nil {
-		fmt.Println("We have an error %w", err)
-	}
-
-	fmt.Printf("Number of bytes: %d\n", n)
+	RenderTemplate(w, "Hello World")
 }
 
 func About(w http.ResponseWriter, r *http.Request) {
-	n, err := fmt.Fprintf(w, "Hello World")
-	if err != nil {
-		fmt.Println("We have an error %w", err)
-	}
-
-	fmt.Printf("Number of bytes: %d\n", n)
+	RenderTemplate(w, "About")
 }
 
 func RenderTemplate(w http.ResponseWriter, tmplt string) {
