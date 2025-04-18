@@ -10,7 +10,7 @@ import (
 )
 
 func RenderTemplate(w http.ResponseWriter, tmplt string) {
-	cache, err := createCacheTemplate()
+	cache, err := CreateCacheTemplate()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -31,7 +31,7 @@ func RenderTemplate(w http.ResponseWriter, tmplt string) {
 	}
 }
 
-func createCacheTemplate() (map[string]*template.Template, error) {
+func CreateCacheTemplate() (map[string]*template.Template, error) {
 	cache := map[string]*template.Template{}
 
 	pages, err := filepath.Glob("./templates/*.page.tmpl")
