@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	var app config.AddConfig
+	var app config.AppConfig
 
 	cache, err := render.CreateCacheTemplate()
 	if err != nil {
@@ -19,6 +19,8 @@ func main() {
 	}
 
 	app.TemplateCache = cache
+
+	render.NewTemplates(&app)
 	http.HandleFunc("/", handlers.Home)
 	http.HandleFunc("/about", handlers.About)
 

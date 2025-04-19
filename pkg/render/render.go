@@ -7,14 +7,22 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+
+	"github.com/Kreqgentle/booking_service/pkg/config"
 )
 
-func RenderTemplate(w http.ResponseWriter, tmplt string) {
-	cache, err := CreateCacheTemplate()
-	if err != nil {
-		log.Fatal(err)
-	}
+var functions = template.FuncMap{}
 
+var app *config.AppConfig
+
+func NewTemplates(a *config.AppConfig) {
+	app = a
+}
+
+func RenderTemplate(w http.ResponseWriter, tmplt string) {
+	cache := app.TemplateCache
+	var err error
+	
 	if t, ok := cache[tmplt]; !ok {
 		log.Fatalf("there is no template for the %s", tmplt)
 	} else {
