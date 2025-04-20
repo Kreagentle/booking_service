@@ -20,9 +20,12 @@ func main() {
 
 	app.TemplateCache = cache
 
+	repo := handlers.NewRepo(&app)
+	handlers.NewHandler(repo)
+
 	render.NewTemplates(&app)
-	http.HandleFunc("/", handlers.Home)
-	http.HandleFunc("/about", handlers.About)
+	http.HandleFunc("/", handlers.Rpstr.Home)
+	http.HandleFunc("/about", handlers.Rpstr.About)
 
 	err = http.ListenAndServe(":8080", nil)
 	if err != nil {
