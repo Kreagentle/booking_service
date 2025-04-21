@@ -20,9 +20,18 @@ func NewTemplates(a *config.AppConfig) {
 }
 
 func RenderTemplate(w http.ResponseWriter, tmplt string) {
-	cache := app.TemplateCache
+	var cache map[string]*template.Template
 	var err error
-	
+
+	if app.UseCache {
+		cache = app.TemplateCache
+	} else {
+		cache, err = CreateCacheTemplate()
+		if err != nil {
+			fmt.Println("error create cache template %w", err)
+		}
+	}
+
 	if t, ok := cache[tmplt]; !ok {
 		log.Fatalf("there is no template for the %s", tmplt)
 	} else {
