@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/Kreqgentle/booking_service/pkg/config"
+	"github.com/Kreqgentle/booking_service/pkg/models"
 	"github.com/Kreqgentle/booking_service/pkg/render"
 )
 
@@ -22,9 +23,12 @@ func NewHandler(r *Repository) {
 }
 
 func (rep *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "Hello World")
+	render.RenderTemplate(w, "Hello World", &models.TmpltData{})
 }
 
 func (rep *Repository) About(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "About")
+	mpString := map[string]string{}
+	mpString["test"] = "About test string"
+
+	render.RenderTemplate(w, "About", &models.TmpltData{MpString: mpString})
 }

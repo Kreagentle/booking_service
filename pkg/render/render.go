@@ -9,9 +9,14 @@ import (
 	"path/filepath"
 
 	"github.com/Kreqgentle/booking_service/pkg/config"
+	"github.com/Kreqgentle/booking_service/pkg/models"
 )
 
 var functions = template.FuncMap{}
+
+func AddDefaultData(data *models.TmpltData) *models.TmpltData {
+	return data
+}
 
 var app *config.AppConfig
 
@@ -19,7 +24,7 @@ func NewTemplates(a *config.AppConfig) {
 	app = a
 }
 
-func RenderTemplate(w http.ResponseWriter, tmplt string) {
+func RenderTemplate(w http.ResponseWriter, tmplt string, data *models.TmpltData) {
 	var cache map[string]*template.Template
 	var err error
 
@@ -36,7 +41,9 @@ func RenderTemplate(w http.ResponseWriter, tmplt string) {
 		log.Fatalf("there is no template for the %s", tmplt)
 	} else {
 		buffer := new(bytes.Buffer)
-		err = t.Execute(buffer, nil)
+
+		data = AddDefaultData(data)
+		err = t.Execute(buffer, data)
 		if err != nil {
 			fmt.Println("error parsing template %w", err)
 		}
