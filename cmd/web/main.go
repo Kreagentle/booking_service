@@ -25,12 +25,22 @@ func main() {
 	handlers.NewHandler(repo)
 
 	render.NewTemplates(&app)
-	http.HandleFunc("/", handlers.Rpstr.Home)
-	http.HandleFunc("/about", handlers.Rpstr.About)
+	// http.HandleFunc("/", handlers.Rpstr.Home)
+	// http.HandleFunc("/about", handlers.Rpstr.About)
 
-	err = http.ListenAndServe(":8080", nil)
+	serve := &http.Server{
+		Addr:    ":8080",
+		Handler: routes(&app),
+	}
+
+	err = serve.ListenAndServe()
 	if err != nil {
 		fmt.Println("We have an error %w", err)
 		return
 	}
+	/*err = http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Println("We have an error %w", err)
+		return
+	}*/
 }
