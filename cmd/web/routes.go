@@ -17,6 +17,8 @@ func routes(app *config.AppConfig) http.Handler {
 	mux := chi.NewRouter()
 
 	mux.Use(middleware.Recoverer)
+	mux.Use(WriteToConsole)
+
 	mux.Get("/", handlers.Rpstr.Home)
 	mux.Get("/about", handlers.Rpstr.About)
 
