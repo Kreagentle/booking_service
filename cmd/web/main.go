@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
+
+	"github.com/alexedwards/scs/v2"
 
 	"github.com/Kreqgentle/booking_service/pkg/config"
 	"github.com/Kreqgentle/booking_service/pkg/handlers"
@@ -12,6 +15,12 @@ import (
 
 func main() {
 	var app config.AppConfig
+
+	session := scs.New()
+	session.Lifetime = 24 * time.Hour
+	session.Cookie.Persist = true
+	session.Cookie.SameSite = http.SameSiteLaxMode
+	session.Cookie.Secure = false
 
 	cache, err := render.CreateCacheTemplate()
 	if err != nil {
