@@ -23,12 +23,12 @@ func NewHandler(r *Repository) {
 }
 
 func (rep *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "Hello World", &models.TmpltData{})
+	render.RenderTemplate(w, "home.page.tmpl", &models.TmpltData{})
 }
 
 func (rep *Repository) About(w http.ResponseWriter, r *http.Request) {
 	mpString := map[string]string{}
 	mpString["test"] = "About test string"
 
-	render.RenderTemplate(w, "About", &models.TmpltData{MpString: mpString})
+	render.RenderTemplate(w, "about.page.tmpl", &models.TmpltData{MpString: mpString})
 }

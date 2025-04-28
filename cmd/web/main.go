@@ -13,14 +13,19 @@ import (
 	"github.com/Kreqgentle/booking_service/pkg/render"
 )
 
-func main() {
-	var app config.AppConfig
+var app config.AppConfig
+var session *scs.SessionManager
 
-	session := scs.New()
+func main() {
+	app.InProd = false
+
+	session = scs.New()
 	session.Lifetime = 24 * time.Hour
 	session.Cookie.Persist = true
 	session.Cookie.SameSite = http.SameSiteLaxMode
-	session.Cookie.Secure = false
+	session.Cookie.Secure = app.InProd
+
+	app.Session = session
 
 	cache, err := render.CreateCacheTemplate()
 	if err != nil {
