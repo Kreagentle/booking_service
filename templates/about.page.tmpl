@@ -8,6 +8,13 @@
                 <p>This is some text</p>
 
                 <p>This came from the template: {{index .MpString "test"}}</p>
+
+                <p> {{if ne (index .MpString "remote_ip") ""}}
+                    The remote IP address is {{index .MpString "remote_ip"}}.
+                {{else}}
+                    The IP address is unknown. Visit the <a href="/">Homepage</a>.
+                {{end}}
+                </p>
             </div>
         </div>
     </div>
