@@ -3,6 +3,7 @@
 
 !*.go
 !*.md
+!*.html
 !go.mod
 !go.sum
 !*.tmpl
