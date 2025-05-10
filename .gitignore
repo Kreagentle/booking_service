@@ -7,3 +7,5 @@
 !go.mod
 !go.sum
 !*.tmpl
+!*.jpeg
+!*.jpg
