@@ -61,16 +61,22 @@
         <div class="col">
             <h1 class="mt-5">Search For Availability</h1>
             <form action="/book.html" method="GET">
-                <div class="mb-3">
-                    <label for="start_date">Starting date</label>
-                    <input type="date" class="form-control" id="start_date" name="start_date" aria-describedby="startDateHelp">
-                    <div id="startDateHelp" class="form-text">Enter your staring date in the form of YYYY-MM-DD.</div>
-                </div>
+                <div class="form-raw">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="start_date">Starting date</label>
+                            <input type="date" class="form-control" id="start_date" name="start_date" aria-describedby="startDateHelp">
+                            <div id="startDateHelp" class="form-text">Enter your staring date in the form of YYYY-MM-DD.</div>
+                        </div>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="end_date">Starting date</label>
-                    <input type="date" class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp">
-                    <div id="endDateHelp" class="form-text">Enter your ending date in the form of YYYY-MM-DD.</div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="end_date">Ending date</label>
+                            <input type="date" class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp">
+                            <div id="endDateHelp" class="form-text">Enter your ending date in the form of YYYY-MM-DD.</div>
+                        </div>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
