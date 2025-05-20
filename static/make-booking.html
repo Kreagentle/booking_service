@@ -59,28 +59,31 @@
 
     <div class="row">
         <div class="col">
-            <h1 class="mt-5">Search For Availability</h1>
-            <form action="/book.html" method="GET">
-                <div class="form-raw">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="start_date">Starting date</label>
-                            <input type="date" class="form-control" id="start_date" name="start_date" aria-describedby="startDateHelp">
-                            <div id="startDateHelp" class="form-text">Enter your staring date in the form of YYYY-MM-DD.</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="end_date">Ending date</label>
-                            <input type="date" class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp">
-                            <div id="endDateHelp" class="form-text">Enter your ending date in the form of YYYY-MM-DD.</div>
-                        </div>
-                    </div>
+            <h1 class="text-center mt-4">Make reservation</h1>
+            <form method="post" action="" class="needs-validation" novalidate>
+                <div class="form-group mt-5">
+                    <label for="first_name">First name</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control" required autocomplete="off">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Search Availability</button>
+                <div class="form-group">
+                    <label for="last_name">Last name</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" class="form-control" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone" id="phone" class="form-control" required autocomplete="off">
+                </div>
+
+                <hr>
+
+                <input type="submit" class="btn btn-primary" value="Reserve">
             </form>
         </div>
     </div>
