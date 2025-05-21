@@ -18,6 +18,10 @@
         .room-width {
             max-width: 50%;
         }
+
+        .redText {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -60,7 +64,7 @@
     <div class="row">
         <div class="col">
             <h1 class="mt-5">Search For Availability</h1>
-            <form action="/book.html" method="GET">
+            <form action="/book.html" method="GET" novalidate class="needs-validation">
                 <div class="form-raw">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
@@ -68,6 +72,9 @@
                             <label for="start_date">Starting date</label>
                             <input type="date" class="form-control" id="start_date" name="start_date" aria-describedby="startDateHelp">
                             <div id="startDateHelp" class="form-text">Enter your staring date in the form of YYYY-MM-DD.</div>
+                        </div>
+                        <div class="invalid-feedback">
+                            Please choose a starting date.
                         </div>
                     </div>
 
@@ -77,11 +84,24 @@
                             <input type="date" class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp">
                             <div id="endDateHelp" class="form-text">Enter your ending date in the form of YYYY-MM-DD.</div>
                         </div>
+                        <div class="invalid-feedback">
+                            Please choose an ending date.
+                        </div>
                     </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Search Availability</button>
             </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p id="my_paragraph">This is some text</p>
+            <p>
+                <button id="colorButton" class="btn btn-outline-secondary">
+                    Click Me
+                </button>
+            </p>
         </div>
     </div>
 </div>
@@ -92,6 +112,37 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+<script>
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+
+    document.getElementById("colorButton").addEventListener("click", function() {
+        let myPar = document.getElementById("my_paragraph");
+
+        if (myPar.classList.contains("redText")) {
+            myPar.classList.remove("redText");
+        } else {
+            myPar.classList.add("redText");
+        }
+    })
+</script>
 </body>
 
 </html>
