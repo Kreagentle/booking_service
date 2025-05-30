@@ -9,3 +9,5 @@
 !*.tmpl
 !*.jpeg
 !*.jpg
+
+.idea/
