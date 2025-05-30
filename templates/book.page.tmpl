@@ -1,0 +1,86 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-5">Search For Availability</h1>
+                <form action="/book.html" method="GET" novalidate class="needs-validation">
+                    <!--<div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="start_date">Starting date</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date" aria-describedby="startDateHelp">
+                                <div id="startDateHelp" class="form-text">Enter your staring date in the form of YYYY-MM-DD.</div>
+                                <div class="invalid-feedback">Please choose a starting date.</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="end_date">Ending date</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp">
+                                <div id="endDateHelp" class="form-text">Enter your ending date in the form of YYYY-MM-DD.</div>
+                                <div class="invalid-feedback">Please choose an ending date.</div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="row" id="booking-dates">
+                                <div class="col">
+                                    <input required type="text" class="form-control" name="start" placeholder="Starting Date">
+                                </div>
+                                <div class="col">
+                                    <input required type="text" class="form-control" name="end" placeholder="Finishing Date">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <button type="submit" class="btn btn-primary">Search Availability</button>
+                </form>
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="col">
+                <p id="my_paragraph">This is some text</p>
+                <p>
+                    <button id="colorButton" class="btn btn-outline-secondary">
+                        Click Me
+                    </button>
+                </p>
+            </div>
+        </div>-->
+    </div>
+    <!--<div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>This is about text</h1>
+                <p>This is some text</p>
+
+                <p>This came from the template: {{index .MpString "test"}}</p>
+
+                <p> {{if ne (index .MpString "remote_ip") ""}}
+                    The remote IP address is {{index .MpString "remote_ip"}}.
+                {{else}}
+                    The IP address is unknown. Visit the <a href="/">Homepage</a>.
+                {{end}}
+                </p>
+            </div>
+        </div>
+    </div>-->
+{{end}}
+
+{{define "js"}}
+<script>
+    const elem = document.getElementById('booking-dates');
+    const rangepicker = new DateRangePicker(elem, {
+            format: "yyyy-mm-dd",
+        });
+</script>
+{{end}}

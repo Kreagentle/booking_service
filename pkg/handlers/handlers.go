@@ -38,3 +38,27 @@ func (rep *Repository) About(w http.ResponseWriter, r *http.Request) {
 
 	render.RenderTemplate(w, "about.page.tmpl", &models.TmpltData{MpString: mpString})
 }
+
+func (rep *Repository) Room1(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "room1.page.tmpl", &models.TmpltData{})
+}
+
+func (rep *Repository) Room2(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "room2.page.tmpl", &models.TmpltData{})
+}
+
+func (rep *Repository) Room3(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "room3.page.tmpl", &models.TmpltData{})
+}
+
+func (rep *Repository) Book(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "book.page.tmpl", &models.TmpltData{})
+}
+
+func (rep *Repository) MakeBooking(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "make-booking.page.tmpl", &models.TmpltData{})
+}
+
+func (rep *Repository) Contact(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "contact.page.tmpl", &models.TmpltData{})
+}
