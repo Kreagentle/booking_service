@@ -28,6 +28,7 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/room3", handlers.Rpstr.Room3)
 
 	mux.Get("/book", handlers.Rpstr.Book)
+	mux.Post("/book", handlers.Rpstr.BookPost)
 	mux.Get("/make-booking", handlers.Rpstr.MakeBooking)
 
 	fileServer := http.FileServer(http.Dir("./static/"))

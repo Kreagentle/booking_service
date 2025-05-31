@@ -3,6 +3,7 @@ package render
 import (
 	"bytes"
 	"fmt"
+	"github.com/justinas/nosurf"
 	"html/template"
 	"log"
 	"net/http"
@@ -14,7 +15,8 @@ import (
 
 var functions = template.FuncMap{}
 
-func AddDefaultData(data *models.TmpltData) *models.TmpltData {
+func AddDefaultData(data *models.TmpltData, r *http.Request) *models.TmpltData {
+	data.CSRFToken = nosurf.Token(r)
 	return data
 }
 
@@ -24,7 +26,7 @@ func NewTemplates(a *config.AppConfig) {
 	app = a
 }
 
-func RenderTemplate(w http.ResponseWriter, tmplt string, data *models.TmpltData) {
+func RenderTemplate(w http.ResponseWriter, r *http.Request, tmplt string, data *models.TmpltData) {
 	var cache map[string]*template.Template
 	var err error
 
@@ -42,7 +44,7 @@ func RenderTemplate(w http.ResponseWriter, tmplt string, data *models.TmpltData)
 	} else {
 		buffer := new(bytes.Buffer)
 
-		data = AddDefaultData(data)
+		data = AddDefaultData(data, r)
 		err = t.Execute(buffer, data)
 		if err != nil {
 			fmt.Println("error parsing template %w", err)
