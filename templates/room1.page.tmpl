@@ -73,7 +73,16 @@
                 // attention.toast({msg: "test", icon:"error"});
                 // attention.success({msg: "test"});
                 // attention.error({msg: "error message"});
-                attention.custom({msg: html, title: "Choose your dates"});
+                attention.custom({
+                    msg: html,
+                    title: "Choose your dates",
+                    callback: function(result) {
+                        fetch('/book-json')
+                            .then(response => response.json())
+                            .then(data => {
+
+                            })
+                    }});
             })
     </script>
 {{end}}
