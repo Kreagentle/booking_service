@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Kreqgentle/booking_service/pkg/config"
-	"github.com/Kreqgentle/booking_service/pkg/models"
-	"github.com/Kreqgentle/booking_service/pkg/render"
+	"github.com/Kreqgentle/booking_service/internal/config"
+	"github.com/Kreqgentle/booking_service/internal/models"
+	"github.com/Kreqgentle/booking_service/internal/render"
 )
 
 var Rpstr *Repository

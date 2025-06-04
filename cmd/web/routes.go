@@ -3,10 +3,11 @@ package main
 import (
 	"net/http"
 
-	"github.com/Kreqgentle/booking_service/pkg/config"
-	"github.com/Kreqgentle/booking_service/pkg/handlers"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
+
+	"github.com/Kreqgentle/booking_service/internal/config"
+	"github.com/Kreqgentle/booking_service/internal/handlers"
 )
 
 func routes(app *config.AppConfig) http.Handler {

@@ -3,14 +3,14 @@ package render
 import (
 	"bytes"
 	"fmt"
-	"github.com/justinas/nosurf"
 	"html/template"
 	"log"
 	"net/http"
 	"path/filepath"
 
-	"github.com/Kreqgentle/booking_service/pkg/config"
-	"github.com/Kreqgentle/booking_service/pkg/models"
+	"github.com/Kreqgentle/booking_service/internal/config"
+	"github.com/Kreqgentle/booking_service/internal/models"
+	"github.com/justinas/nosurf"
 )
 
 var functions = template.FuncMap{}

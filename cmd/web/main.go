@@ -8,9 +8,9 @@ import (
 
 	"github.com/alexedwards/scs/v2"
 
-	"github.com/Kreqgentle/booking_service/pkg/config"
-	"github.com/Kreqgentle/booking_service/pkg/handlers"
-	"github.com/Kreqgentle/booking_service/pkg/render"
+	"github.com/Kreqgentle/booking_service/internal/config"
+	"github.com/Kreqgentle/booking_service/internal/handlers"
+	"github.com/Kreqgentle/booking_service/internal/render"
 )
 
 var app config.AppConfig
