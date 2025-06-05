@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kreqgentle/booking_service/internal/forms"
 	"log"
 	"net/http"
 
@@ -86,7 +87,13 @@ func (rep *Repository) BookPostJson(w http.ResponseWriter, r *http.Request) {
 }
 
 func (rep *Repository) MakeBooking(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, r, "make-booking.page.tmpl", &models.TmpltData{})
+	render.RenderTemplate(w, r, "make-booking.page.tmpl", &models.TmpltData{
+		Form: forms.New(nil),
+	})
+}
+
+func (rep *Repository) MakeBookingPost(w http.ResponseWriter, r *http.Request) {
+
 }
 
 func (rep *Repository) Contact(w http.ResponseWriter, r *http.Request) {

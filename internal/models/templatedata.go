@@ -1,5 +1,7 @@
 package models
 
+import "github.com/Kreqgentle/booking_service/internal/forms"
+
 type TmpltData struct {
 	MpString    map[string]string
 	MpInt       map[string]int
@@ -9,4 +11,5 @@ type TmpltData struct {
 	Flash       string
 	Warning     string
 	Error       string
+	Form        *forms.Form
 }
