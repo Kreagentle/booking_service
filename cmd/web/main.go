@@ -1,22 +1,48 @@
 package main
 
 import (
+	"encoding/gob"
 	"fmt"
+	"github.com/Kreqgentle/booking_service/internal/handlers"
+	"github.com/Kreqgentle/booking_service/internal/models"
+	"github.com/Kreqgentle/booking_service/internal/render"
+	"github.com/alexedwards/scs/v2"
 	"log"
 	"net/http"
 	"time"
 
-	"github.com/alexedwards/scs/v2"
-
 	"github.com/Kreqgentle/booking_service/internal/config"
-	"github.com/Kreqgentle/booking_service/internal/handlers"
-	"github.com/Kreqgentle/booking_service/internal/render"
 )
 
 var app config.AppConfig
 var session *scs.SessionManager
 
 func main() {
+	err := run()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	serve := &http.Server{
+		Addr:    ":8080",
+		Handler: routes(&app),
+	}
+
+	err = serve.ListenAndServe()
+	if err != nil {
+		fmt.Println("We have an error %w", err)
+		return
+	}
+	/*err = http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Println("We have an error %w", err)
+		return
+	}*/
+}
+
+func run() error {
+	gob.Register(models.Reservation{})
+
 	app.InProd = false
 
 	session = scs.New()
@@ -41,20 +67,5 @@ func main() {
 	render.NewTemplates(&app)
 	// http.HandleFunc("/", handlers.Rpstr.Home)
 	// http.HandleFunc("/about", handlers.Rpstr.About)
-
-	serve := &http.Server{
-		Addr:    ":8080",
-		Handler: routes(&app),
-	}
-
-	err = serve.ListenAndServe()
-	if err != nil {
-		fmt.Println("We have an error %w", err)
-		return
-	}
-	/*err = http.ListenAndServe(":8080", nil)
-	if err != nil {
-		fmt.Println("We have an error %w", err)
-		return
-	}*/
+	return nil
 }
